@@ -1,0 +1,14 @@
+
+.marquee {
+  animation: marquee 24s infinite linear;
+  word-spacing: 1vw;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateY(0);
+  } 100% {
+    transform: translateY(100%);
+  }
+
+}

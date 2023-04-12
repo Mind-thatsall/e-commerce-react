@@ -10,12 +10,16 @@ import Article from "./views/Article"
 import Cgu from "./views/Cgu"
 import Checkout from "./views/Checkout"
 import Contact from "./views/Contact"
+import Noise from "./components/Noise"
+import Navbar from "./components/Navbar"
 
 
 function App() {
 
   return (
-    <div className="App">
+    <div className="App bg-[#9F948B]">
+    <Noise />
+    <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/categories" element={<Categories />} />
