@@ -12,12 +12,13 @@ import Checkout from "./views/Checkout"
 import Contact from "./views/Contact"
 import Noise from "./components/Noise"
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 
 function App() {
 
   return (
-    <div className="App bg-[#9F948B]">
+    <div className="App bg-[#9F948B] ">
     <Noise />
     <Navbar />
     <Routes>
@@ -39,6 +40,7 @@ function App() {
       <Route path="/profile" element={<Profile />} />
 
     </Routes>
+    <Footer />
     </div>
   )
 }

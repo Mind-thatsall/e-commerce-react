@@ -4,6 +4,27 @@
   word-spacing: 1vw;
 }
 
+.hover-gender {
+  filter: saturate(1);
+  transition: filter 0.15s ease;
+}
+
+.hover-gender:hover {
+  filter: saturate(0.6)
+}
+
+
+.hover-gender:hover .gender {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.gender {
+  opacity: 0;
+  transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+
+}
+
 @keyframes marquee {
   0% {
     transform: translateY(0);
