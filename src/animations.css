@@ -1,6 +1,6 @@
 
 .marquee {
-  animation: marquee 24s infinite linear;
+  animation: marquee 40s infinite linear;
   word-spacing: 1vw;
 }
 

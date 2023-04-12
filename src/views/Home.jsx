@@ -1,7 +1,6 @@
-import React from "react";
-import men from "../assets/images/men.jpg";
-import women from "../assets/images/women.png";
-import SideBars from "../components/Sidebars";
+import men from "@/assets/images/men.jpg";
+import women from "@/assets/images/women.png";
+import SideBars from "@/components/Sidebars";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -26,9 +25,9 @@ const Home = () => {
           style={{ fontFamily: "ClashDisplay-Medium" }}
           className="font-bold text-center uppercase text-[1.3vw] leading-[2vw] text-[#796B66] mix-blend-difference w-[49vw]"
         >
-          UNE MARQUE DE STREETWEAR né à la capitale maintenant ouvert à la france.
-          ON BOSSE DUR POUR CRéER DES VÊTEMENTS COMFORTABLE ET INTEMPORELLE.
-          UNE TRèS BONNE QUALITé POUR UN PRIX ACCESSIBLE.
+          UNE MARQUE DE STREETWEAR né à la capitale maintenant ouvert à la
+          france. ON BOSSE DUR POUR CRéER DES VÊTEMENTS COMFORTABLE ET
+          INTEMPORELLE. UNE TRèS BONNE QUALITé POUR UN PRIX ACCESSIBLE.
         </p>
       </div>
       <Link
