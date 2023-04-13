@@ -1,19 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./views/Home";
-import Categories from "./views/Categories";
-import Shop from "./views/Shop";
-import Cart from "./views/Cart";
-import Login from "./views/Login";
-import Register from "./views/Register";
-import Profile from "./views/Profile";
-import Article from "./views/Article";
-import Cgu from "./views/Cgu";
-import Checkout from "./views/Checkout";
-import Contact from "./views/Contact";
-import Noise from "./components/Noise";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import SideBars from "./components/Sidebars";
+import Home from "@/views/Home";
+import Categories from "@/views/Categories";
+import Shop from "@/views/Shop";
+import Cart from "@/views/Cart";
+import Login from "@/views/Login";
+import Register from "@/views/Register";
+import Profile from "@/views/Profile";
+import Article from "@/views/Article";
+import Cgu from "@/views/Cgu";
+import Checkout from "@/views/Checkout";
+import Contact from "@/views/Contact";
+import Noise from "@/components/Noise";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SideBars from "@/components/Sidebars";
 
 function App() {
   return (

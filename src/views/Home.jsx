@@ -1,13 +1,10 @@
 import men from "@/assets/images/men.jpg";
 import women from "@/assets/images/women.png";
-import SideBars from "@/components/Sidebars";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="grid h-screen grid-cols-6 overflow-hidden md:grid-cols-8 lg:grid-cols-12 lg:grid-rows-6">
-      <SideBars rotate="" side="left-0" />
-      <SideBars rotate="rotate-180" side="right-0" />
       <div className="flex flex-col items-center gap-[2vh] self-center w-full col-start-1 col-end-7 md:col-start-2 md:col-end-8 lg:col-start-2 lg:col-end-12 row-start-2 row-end-3">
         <h1
           style={{ fontFamily: "ClashDisplay-Bold" }}
