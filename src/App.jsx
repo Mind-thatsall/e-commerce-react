@@ -12,12 +12,11 @@ import Checkout from "@/views/Checkout";
 import Contact from "@/views/Contact";
 import Noise from "@/components/Noise";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import SideBars from "@/components/Sidebars";
 
 function App() {
   return (
-    <div className="App bg-[#9F948B] overflow-hidden">
+    <div className="App bg-[#9F948B]">
       <Noise />
       <Navbar />
       <SideBars rotate="" side="left-0" />
@@ -40,7 +39,6 @@ function App() {
         <Route path="/cgu" element={<Cgu />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
