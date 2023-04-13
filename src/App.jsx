@@ -13,12 +13,15 @@ import Contact from "./views/Contact";
 import Noise from "./components/Noise";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SideBars from "./components/Sidebars";
 
 function App() {
   return (
-    <div className="App bg-[#9F948B] ">
+    <div className="App bg-[#9F948B] overflow-hidden">
       <Noise />
       <Navbar />
+      <SideBars rotate="" side="left-0" />
+      <SideBars rotate="rotate-180" side="right-0" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />

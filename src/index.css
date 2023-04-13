@@ -10,6 +10,19 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.hide-scroll {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.hide-scroll::-webkit-scrollbar {
+  width: 0px; /* For Chrome, Safari, and Opera */
+}
+
+body {
+  overflow: hidden;
+}
+
 .gender {
   position: absolute;
   top: 78%;
