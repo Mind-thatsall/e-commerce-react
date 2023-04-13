@@ -5,6 +5,7 @@ const SideBars = ({ rotate, side }) => {
         writingMode: "vertical-lr",
         textOrientation: "mixed",
         fontFamily: "ClashDisplay-Medium",
+        zIndex: 2,
       }}
       className={`hidden whitespace-nowrap md:flex items-center justify-center bg-[#222421] text-[#9F948B] absolute h-full w-[4vw] cursor-vertical-text top-0 ${side} ${rotate} text-[1.3vw] overflow-hidden`}
     >
