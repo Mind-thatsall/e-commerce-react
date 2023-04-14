@@ -8,7 +8,10 @@ import { useLocation } from "react-router-dom";
 const Shop = () => {
   const scrollBoxRef = useRef(null);
   const location = useLocation();
-  const categorieName = location.pathname.split("/")[3].toUpperCase();
+  const categorieName =
+    location.pathname !== "/shop"
+      ? location.pathname.split("/")[3].toUpperCase()
+      : "SHOP";
 
   function maxSize() {
     console.log("test");
