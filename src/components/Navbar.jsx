@@ -14,7 +14,7 @@ const Navbar = () => {
         className="opacity-0 absolute z-[10] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
       >
         <input
-          className="px-[1vw] py-[0.7vw] w-[400px] text-[#222421] bg-[#9F948B] border-2 border-[#222421] focus:border-4 focus-visible:outline-none transition-all placeholder:text-[#222421]/80"
+          className="px-[15px] py-[10px] w-[300px] md:w-[400px] text-[#222421] bg-[#9F948B] border-2 border-[#222421] focus:border-4 focus-visible:outline-none transition-all placeholder:text-[#222421]/80"
           type="text"
           name=""
           placeholder="Black hoodie..."
@@ -26,7 +26,7 @@ const Navbar = () => {
         className="opacity-0 absolute w-full h-full bg-[#22242180] pointer-events-none z-[9]"
       ></span>
       <nav
-        className="z-[2] mix-blend-difference text-[#796B66] fixed flex justify-between w-full px-[6vw] mt-[1.25vh] text-[4vw] md:text-[2vw] lg:text-[1vw]"
+        className="z-[2] mix-blend-difference text-[#796B66] fixed flex justify-between w-full px-[4vw] md:px-[6vw] mt-[1.25vh] text-[4vw] md:text-[2vw] lg:text-[1vw]"
         style={{ fontFamily: "ClashDisplay-Medium" }}
       >
         <ul className="flex gap-[2vw]">
