@@ -18,7 +18,6 @@
 }
 
 .gender {
-  opacity: 0;
   transition: opacity 0.15s ease-in, transform 0.15s ease-in;
 }
 
