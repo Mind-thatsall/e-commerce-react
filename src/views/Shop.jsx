@@ -14,7 +14,6 @@ const Shop = () => {
       : "SHOP";
 
   function maxSize() {
-    console.log("test");
     scrollBoxRef.current.style.height =
       window.innerHeight - scrollBoxRef.current.offsetTop + "px";
   }

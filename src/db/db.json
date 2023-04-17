@@ -10,11 +10,7 @@
       "gender": "male",
       "rate": 2,
       "categories": "Vest",
-      "images": [
-        "./assets/images/vest.jpg",
-        "./assets/images/vest2.jpg",
-        "./assets/images/vest3.jpg"
-      ],
+      "image": "@/assets/images/men.jpg",
       "availableSizes": [
         {
           "size": "S",
@@ -39,11 +35,7 @@
       "rate": 4,
       "gender": "female",
       "categories": "T-shirt",
-      "images": [
-        "./assets/images/tshirt.jpg",
-        "./assets/images/tshirt2.jpg",
-        "./assets/images/tshirt3.jpg"
-      ],
+      "image": "@/assets/images/men.jpg",
       "availableSizes": [
         {
           "size": "S",
@@ -68,11 +60,7 @@
       "rate": 3,
       "gender": "mixed",
       "categories": "Jeans",
-      "images": [
-        "./assets/images/jean.jpg",
-        "./assets/images/jean2.jpg",
-        "./assets/images/jean3.jpg"
-      ],
+      "image": "@/assets/images/men.jpg",
       "availableSizes": [
         {
           "size": "S",
@@ -94,11 +82,7 @@
       "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid",
       "color": "Black",
       "price": 100,
-      "images": [
-        "./assets/images/vest.jpg",
-        "./assets/images/vest2.jpg",
-        "./assets/images/vest3.jpg"
-      ],
+      "image": "@/assets/images/men.jpg",
       "availableSizes": [
         {
           "size": "S",
