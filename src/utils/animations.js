@@ -1,8 +1,6 @@
 import gsap from "gsap";
 
 export function openSearch(input, modal) {
-  console.log("launch");
-
   gsap.fromTo(
     modal,
     {
