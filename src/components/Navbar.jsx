@@ -1,15 +1,28 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
-import { openSearch, closeMenu, toggleMenu } from "@/utils/animations";
+import React, { useState, useEffect, useRef } from "react";
+import { openSearch, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
-import { useState } from "react";
 
 const Navbar = ({ cartSize }) => {
   const inputRef = useRef(null);
   const bgModalRef = useRef(null);
   const menuRef = useRef(null);
   const [menuOpened, setMenuOpened] = useState(false);
+
+  // State variable with the current date and time as initial value
+  const [dateTime, setDateTime] = useState(new Date());
+
+  // Use the useEffect hook to update the dateTime state variable every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Format the dateTime state variable to display the time and date
+  const formattedDateTime = `${dateTime.toLocaleTimeString()} - ${dateTime.toLocaleDateString()}`;
 
   return (
     <>
@@ -41,7 +54,7 @@ const Navbar = ({ cartSize }) => {
           </li>
         </ul>
         <p className="hidden lg:block" style={{ wordSpacing: "0.4vw" }}>
-          13:30 - 06/04/2023 | <Link to="/cgu">CGU</Link>{" "}
+          {formattedDateTime} | <Link to="/cgu">CGU</Link>{" "}
           <Link to="/contact">CONTACT</Link> | MADE IN FRANCE
         </p>
         <ul className="flex gap-[2vw]">
