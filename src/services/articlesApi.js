@@ -6,6 +6,8 @@ const articlesApi = axios.create({
 
 export const articlesApiEndPoint = "/products";
 
+// Functions used to interact with the articles on our backend, here we're only fetching because the backend take care of the rest
+
 export const getArticles = async () => {
   const response = await articlesApi.get(articlesApiEndPoint);
   return response.data;

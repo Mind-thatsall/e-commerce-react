@@ -1,5 +1,4 @@
 import React from "react";
-import categorie from "@/assets/images/men.jpg";
 import { useRef } from "react";
 import { useEffect } from "react";
 import Card from "@/components/Card";
@@ -8,7 +7,7 @@ import { maxSize } from "@/utils/functions";
 import { articlesApiEndPoint, getArticles } from "../services/articlesApi";
 import useSWR from "swr";
 
-const Shop = ({ mutation }) => {
+const Shop = (props) => {
   const scrollBoxRef = useRef(null);
   const location = useLocation();
   const categorieName =
@@ -50,7 +49,11 @@ const Shop = ({ mutation }) => {
         {error && error}
         {articles &&
           articles.map((article) => (
-            <Card key={article.id} {...article} mutation={mutation} />
+            <Card
+              key={article.id}
+              {...article}
+              addToCartMutation={props.addToCartMutation}
+            />
           ))}
       </div>
     </div>

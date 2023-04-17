@@ -1,10 +1,7 @@
 import React from "react";
 import product from "@/assets/images/men.jpg";
-import useSWR from "swr";
-import { articlesApiEndPoint, getArticles } from "../services/articlesApi";
-import { addCartItem } from "../services/cartApi";
 
-const Card = ({ mutation, ...article }) => {
+const Card = ({ addToCartMutation, ...article }) => {
   return (
     <div
       style={{ fontFamily: "ClashDisplay-Medium" }}
@@ -26,7 +23,7 @@ const Card = ({ mutation, ...article }) => {
         <p
           className="text-[12vw] pr-[0.5vw] md:pr-0 md:text-[7vw] lg:text-[6vw] leading-[4vw] hover:cursor-pointer"
           style={{ fontFamily: "ClashDisplay-Light" }}
-          onClick={() => mutation(article)}
+          onClick={() => addToCartMutation(article)}
         >
           +
         </p>
