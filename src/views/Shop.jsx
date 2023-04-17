@@ -4,8 +4,11 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import Card from "@/components/Card";
 import { useLocation } from "react-router-dom";
+import { maxSize } from "@/utils/functions";
+import { articlesApiEndPoint, getArticles } from "../services/articlesApi";
+import useSWR from "swr";
 
-const Shop = () => {
+const Shop = ({ mutation }) => {
   const scrollBoxRef = useRef(null);
   const location = useLocation();
   const categorieName =
@@ -13,17 +16,18 @@ const Shop = () => {
       ? location.pathname.split("/")[3].toUpperCase()
       : "SHOP";
 
-  function maxSize() {
-    scrollBoxRef.current.style.height =
-      window.innerHeight - scrollBoxRef.current.offsetTop + "px";
-  }
+  const {
+    data: articles,
+    error,
+    isLoading,
+  } = useSWR(articlesApiEndPoint, getArticles);
 
   useEffect(() => {
-    maxSize();
-    window.addEventListener("resize", maxSize);
+    maxSize(scrollBoxRef.current);
+    window.addEventListener("resize", () => maxSize(scrollBoxRef.current));
 
     return () => {
-      window.removeEventListener("resize", maxSize);
+      window.removeEventListener("resize", () => maxSize(scrollBoxRef.current));
     };
   }, []);
 
@@ -42,12 +46,12 @@ const Shop = () => {
         ref={scrollBoxRef}
         className="hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto"
       >
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {isLoading && "Loading..."}
+        {error && error}
+        {articles &&
+          articles.map((article) => (
+            <Card key={article.id} {...article} mutation={mutation} />
+          ))}
       </div>
     </div>
   );
