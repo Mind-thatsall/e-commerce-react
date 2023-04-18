@@ -48,3 +48,10 @@ ADD DIFFERENT USAGES WITH SCREENSHOTS
 
 ## Credits
 ADD COLLABORATORS
+
+
+Hello, on est le groupe sapesavenue avec [prénoms]. C'est donc une boutique en ligne de streetwear qui souhaite se développer à travers la France.
+
+- Présenter wireframe Front et Back brièvement (Front: Accueil, Panier, Shop)
+- Présenter MCD
+- Si plus de temps présenter les routes ou le dico de données
