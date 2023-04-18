@@ -1,16 +1,16 @@
-import React from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Card from "@/components/Card";
 import { useLocation } from "react-router-dom";
 import { maxSize } from "@/utils/functions";
-import { articlesApiEndPoint, getArticles } from "../services/articlesApi";
+import { articlesApiEndPoint, getArticles } from "@/services/articlesApi";
 import useSWR from "swr";
-import gsap from "gsap";
+import { toggleFilters } from "@/utils/animations";
 
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
+  const filtersRef = useRef(null);
   const location = useLocation();
+  const [isOpenFilters, setIsOpenFilters] = useState(false);
   const categorieName =
     location.pathname !== "/shop"
       ? location.pathname.split("/")[3].toUpperCase()
@@ -58,12 +58,12 @@ const Shop = (props) => {
             />
           ))}
       </div>
-      <div className="fixed bottom-[2vh] w-[400px] h-auto flex flex-col gap-2">
-        <div className="w-full h-[200px] bg-[#9F948B] border-2 border-[#222421]">
-
-        </div>
-        <div className="flex gap-2 p-2 bg-[#9F948B] h-[55px] border-2 border-[#222421]">
-          <button className="flex items-center justify-center w-full h-full bg-[#222421] text-[#9F948B] hover:bg-[#30322e] transition-colors active:bg-[#383a36]">
+        <div ref={filtersRef} className="fixed bottom-[8vh] opacity-0 w-[400px] h-[200px] bg-[#9F948B] border-2 border-[#222421]"></div>
+        <div className="fixed bottom-[1vh] w-[400px] flex gap-2 p-2 bg-[#9F948B] h-[55px] border-2 border-[#222421]">
+          <button onClick={() => {
+            toggleFilters(filtersRef.current, isOpenFilters);
+            setIsOpenFilters(!isOpenFilters);
+          }} className="flex items-center justify-center w-full h-full bg-[#222421] text-[#9F948B] hover:bg-[#30322e] transition-colors active:bg-[#383a36]">
             COLOR
           </button>
           <button className="flex items-center justify-center w-full h-full bg-[#222421] text-[#9F948B] hover:bg-[#30322e] transition-colors active:bg-[#383a36]">
@@ -72,7 +72,6 @@ const Shop = (props) => {
           <button className="flex items-center justify-center w-full h-full bg-[#222421] text-[#9F948B]">
             PRICE
           </button>
-        </div>
       </div>
     </div>
   );
