@@ -1,31 +1,5 @@
 {
-  "cart": [
-    {
-      "id": "Ae28e282131",
-      "name": "Jean troué",
-      "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid",
-      "color": "Blue",
-      "price": 10,
-      "rate": 3,
-      "gender": "mixed",
-      "categories": "Jeans",
-      "image": "@/assets/images/men.jpg",
-      "availableSizes": [
-        {
-          "size": "S",
-          "quantity": 10
-        },
-        {
-          "size": "XS",
-          "quantity": 10
-        },
-        {
-          "size": "XL",
-          "quantity": 10
-        }
-      ]
-    }
-  ],
+  "cart": [],
   "products": [
     {
       "id": "Ae28e282134",
