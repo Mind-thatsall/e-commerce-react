@@ -14,7 +14,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     
     e.preventDefault();
-    
 
       await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
         username: email,
@@ -22,8 +21,8 @@ const Login = () => {
       })
       .then((response) => {
         setToken(response.data.token);
-        console.log(response.data);
-        Cookies.set("token",token);
+        console.log(response.data.token);
+        Cookies.set("token",response.data.token);
         navigate("/");
       })
       .catch((error) => console.log(error))
@@ -48,7 +47,7 @@ const Login = () => {
 
           <div className="mb-2">
             <label
-              for="email"
+              htmlFor="email"
               className="block text-[#222421]">
               Email
             </label>

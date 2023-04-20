@@ -19,10 +19,6 @@
   width: 0px; /* For Chrome, Safari, and Opera */
 }
 
-body {
-  overflow: hidden;
-}
-
 .gender {
   position: absolute;
   top: 78%;
