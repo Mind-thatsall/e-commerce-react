@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const CategorieCard = ({ picture, categorieName, slug }) => {
   return (
-    <Link className="relative" to={slug}>
+    <Link className="relative" to={slug} state={{id: 1}}>
       <img
-        className="h-full w-full"
+        className="w-full h-full"
         src={picture}
         alt=""
         width={310}

@@ -8,11 +8,11 @@ import useSWR from "swr";
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
   const location = useLocation();
-  let filteredArticles = []
   const categorieName =
     location.pathname !== "/shop"
       ? location.pathname.split("/")[3].toUpperCase()
       : "SHOP";
+  const idCategory = location.state.id;
 
   const {
     data: articles,
