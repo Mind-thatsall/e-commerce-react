@@ -4,13 +4,11 @@ import { useLocation } from "react-router-dom";
 import { maxSize } from "@/utils/functions";
 import { articlesApiEndPoint, getArticles } from "@/services/articlesApi";
 import useSWR from "swr";
-import { toggleFilters } from "@/utils/animations";
 
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
-  const filtersRef = useRef(null);
   const location = useLocation();
-  const [isOpenFilters, setIsOpenFilters] = useState(false);
+  let filteredArticles = []
   const categorieName =
     location.pathname !== "/shop"
       ? location.pathname.split("/")[3].toUpperCase()
@@ -48,7 +46,7 @@ const Shop = (props) => {
         className='hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto'
       >
         {isLoading && "Loading..."}
-        {error && error}
+        {error && <div>{error.message}</div>}
         {articles &&
           articles.map((article) => (
             <Card
@@ -58,7 +56,7 @@ const Shop = (props) => {
             />
           ))}
       </div>
-      
+
     </div>
   );
 };

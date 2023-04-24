@@ -27,6 +27,7 @@ function App() {
   const navigate = useNavigate();
   const {
     data: cartItems,
+    error,
     mutate,
     isLoading,
   } = useSWR(cartApiEndPoint, getCartItems);
@@ -42,7 +43,7 @@ function App() {
     } else {
       navigate("/login")
     }
-    
+
   };
 
   const removeCartMutation = async (id) => {
@@ -58,7 +59,7 @@ function App() {
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar cartSize={cartItems && cartItems.length} />
+      <Navbar errorState={error} loadingState={isLoading} cartSize={cartItems && cartItems.length} />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>
