@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Card from "@/components/Card";
 import { useLocation } from "react-router-dom";
 import { maxSize } from "@/utils/functions";
@@ -12,7 +12,7 @@ const Shop = (props) => {
     location.pathname !== "/shop"
       ? location.pathname.split("/")[3].toUpperCase()
       : "SHOP";
-  const idCategory = location.state.id;
+  const idCategory = location.state ? location.state.id : null;
 
   const {
     data: articles,

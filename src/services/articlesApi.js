@@ -17,3 +17,13 @@ export const getArticles = async () => {
     throw new Error("There's an error:", err.message);
   }
 };
+
+export const getArticlesFromCategory = async (gender, slug) => {
+  try {
+    const response = await articlesApi.get(`/api/${gender}/categories/${slug}/products`)
+    return response.data;
+  } catch(err) {
+    console.error(err)
+    throw new Error("There's an error:", err.message);
+  }
+};
