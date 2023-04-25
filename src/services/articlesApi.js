@@ -14,7 +14,7 @@ export const getArticles = async () => {
     return response.data;
   } catch(err) {
     console.error(err)
-    throw new Error("There's an error:", err.message);
+    if(err.code === "ERR_NETWORK") throw new Error("An error occurred while getting articles");
   }
 };
 
@@ -24,6 +24,6 @@ export const getArticlesFromCategory = async (gender, slug) => {
     return response.data;
   } catch(err) {
     console.error(err)
-    throw new Error("There's an error:", err.message);
+    if(err.code === "ERR_NETWORK") throw new Error("An error occurred while getting articles");
   }
 };

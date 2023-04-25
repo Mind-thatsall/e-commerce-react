@@ -1,14 +1,8 @@
 import product from "@/assets/images/men.jpg";
 import ArticleCart from "@/components/ArticleCart";
 import { Link } from "react-router-dom";
-import { useAuth } from "../components/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
-const Cart = ({ items, removeFromCart }) => {
-  const navigate = useNavigate();
-  const {token} = useAuth();
-
+const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
   function calculateTotal(items) {
     let result = 0;
     for (const item in items) {
@@ -29,14 +23,15 @@ const Cart = ({ items, removeFromCart }) => {
               <div className="grid w-full grid-flow-row grid-cols-2 gap-3 h-fit">
                 {items.map((item) => (
                   <Link to={`/article/${item.slug}`}>
-                  <img
-                    key={item.id}
-                    src={product}
-                    alt=""
-                    width={160}
-                    height={200}
-                    className="h-auto"
-                  /></Link>
+                    <img
+                      key={item.id}
+                      src={product}
+                      alt=""
+                      width={160}
+                      height={200}
+                      className="h-auto"
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -67,16 +62,24 @@ const Cart = ({ items, removeFromCart }) => {
           </>
         ) : (
           <div className="flex items-center justify-center w-full h-full">
-            <p className="w-[260px] text-center">
-              NO ITEMS WERE FOUND, START GETTING SOME AT THE{" "}
-              <Link
-                to="/shop"
-                className="underline"
-                style={{ fontFamily: "ClashDisplay-SemiBold" }}
-              >
-                SHOP
-              </Link>
-            </p>
+            <span className="w-[260px] text-center">
+              {errorState ? (
+                "ERROR WHILE FETCHING YOUR CART."
+              ) : loadingState ? (
+                "LOADING..."
+              ) : (
+                <p>
+                  NO ITEMS WERE FOUND, START GETTING SOME AT THE{" "}
+                  <Link
+                    to="/shop"
+                    className="underline"
+                    style={{ fontFamily: "ClashDisplay-SemiBold" }}
+                  >
+                    SHOP
+                  </Link>
+                </p>
+              )}{" "}
+            </span>
           </div>
         )}
       </div>

@@ -92,7 +92,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"
-          element={token ? <Cart items={cartItems} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
+          element={token ? <Cart items={cartItems} errorState={error} loadingState={isLoading} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
         />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cgu" element={<Cgu />} />
