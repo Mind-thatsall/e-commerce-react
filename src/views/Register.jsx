@@ -73,7 +73,7 @@ const Register = () => {
 
     if(checkInputs()) {
       await axios
-      .post(import.meta.env.VITE_API_URL + "api/user/new", {
+      .post(import.meta.env.VITE_API_URL + "/api/user/new", {
         email: email,
         firstname: firstName,
         lastname: lastName,
@@ -86,10 +86,10 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error)
-        setErrors({ network: "An error occured when creating your account." })
+        setErrors({network: "An error occured when creating your account." })
       });
     }
-
+    
   };
 
   return (
@@ -104,7 +104,7 @@ const Register = () => {
 
         {(errors["password"] && typeof errors["password"] !== "string") ?
           Object.values(errors["password"]).map((error, index) => <p key={index} className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>) : ""}
-
+        
         {errors["network"] && <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{errors["network"]}</p>}
 
         <form

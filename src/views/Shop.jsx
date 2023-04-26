@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Card from "@/components/Card";
 import { useLocation } from "react-router-dom";
 import { maxSize } from "@/utils/functions";
 import { articlesApiEndPoint, getArticles } from "@/services/articlesApi";
 import useSWR from "swr";
+import { toggleFilters } from "@/utils/animations";
 
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
@@ -13,7 +14,7 @@ const Shop = (props) => {
       ? location.pathname.split("/")[3].toUpperCase()
       : "SHOP";
   const idCategory = location.state ? location.state.id : null;
-
+  
   const {
     data: articles,
     error,
@@ -23,7 +24,6 @@ const Shop = (props) => {
   useEffect(() => {
     maxSize(scrollBoxRef.current);
     window.addEventListener("resize", () => maxSize(scrollBoxRef.current));
-
     return () => {
       window.removeEventListener("resize", () => maxSize(scrollBoxRef.current));
     };
@@ -55,8 +55,9 @@ const Shop = (props) => {
               addToCartMutation={props.addToCartMutation}
             />
           ))}
-      </div>
 
+      </div>
+      
     </div>
   );
 };

@@ -27,9 +27,9 @@ function App() {
   const navigate = useNavigate();
   const {
     data: cartItems,
-    error,
     mutate,
     isLoading,
+    error,
   } = useSWR(cartApiEndPoint, getCartItems);
 
   const addToCartMutation = async (newItem) => {
@@ -43,7 +43,7 @@ function App() {
     } else {
       navigate("/login")
     }
-
+    
   };
 
   const removeCartMutation = async (id) => {
@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar errorState={error} loadingState={isLoading} cartSize={cartItems && cartItems.length} />
+      <Navbar cartSize={cartItems && cartItems.length} errorState={error} loadingState={isLoading} />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>
@@ -92,7 +92,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"
-          element={token ? <Cart items={cartItems} errorState={error} loadingState={isLoading} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
+          element={token ? <Cart errorState={error} loadingState={isLoading}  items={cartItems} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
         />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cgu" element={<Cgu />} />

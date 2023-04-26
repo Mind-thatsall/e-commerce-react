@@ -35,8 +35,7 @@ const Menu = ({ menuRef, setMenu }) => {
         CGU
       </Link>
 
-
-      <Link to="/login" className="text-[#9F948B] text-[5vw] leading-[5vw] absolute bottom-[70px]" >CONNECT</Link>
+      <Link to="/login" className="text-[#9F948B] text-[9vw] leading-[5vw] absolute bottom-[70px]">CONNECT</Link>
     </div>
   );
 };

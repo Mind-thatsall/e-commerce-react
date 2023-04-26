@@ -10,13 +10,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const {setToken,token} = useAuth();
-  const {error, setError} = useState();
+  const [error,setError] = useState();
 
   const handleSubmit = async (e) => {
-
+    
     e.preventDefault();
 
-      await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
+      await axios.post(import.meta.env.VITE_API_URL + "/api/login_check", {
         username: email,
         password: password,
       })
@@ -25,25 +25,23 @@ const Login = () => {
         Cookies.set("token",response.data.token);
         navigate("/");
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((error) =>{
+        console.log(error);
         if(error.response.status === 401) setError("Your email address and password are incorrect.");
       })
   }
 
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden uppercase">
-     <div className="p-6 flex flex-col justify-center items-center bg-[#9F948B] border-2 border-[#222421] shadow-xl lg:max-w-xl">
+    <div className="relative flex flex-col justify-center min-h-screen overflow-hidden uppercase">
+     <div className="p-6 m-auto bg-[#9F948B] border-2 border-[#222421] shadow-xl lg:max-w-xl">
 
         <h1
             style={{ fontFamily: "ClashDisplay-SemiBold" }}
             className="text-2xl text-[#222421] font-bold text-center md:text-3xl lg:text-4xl">
             Login
         </h1>
-
         {error && <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>}
-
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}
           className="mt-6 text-xl"

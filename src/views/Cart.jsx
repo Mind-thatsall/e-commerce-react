@@ -3,10 +3,12 @@ import ArticleCart from "@/components/ArticleCart";
 import { Link } from "react-router-dom";
 
 const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
+
   function calculateTotal(items) {
+    console.log(items);
     let result = 0;
     for (const item in items) {
-      result += items[item].price;
+      result += Number(items[item].price);
     }
     return result;
   }
@@ -25,11 +27,11 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
                   <Link to={`/article/${item.slug}`}>
                     <img
                       key={item.id}
-                      src={product}
+                      src={item.picture}
                       alt=""
                       width={160}
                       height={200}
-                      className="h-auto"
+                      className="object-cover h-full"
                     />
                   </Link>
                 ))}
