@@ -2,15 +2,7 @@
 
 ## Description
 
-The purpose of this project was to create a full fledge (or close enough) e-commerce website in about 2 weeks-1 month. This repository concerns the Front-End of this project while the Back-End is in PHP (Symfony 6) in another repository.
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
+The purpose of this project was to create a full fledge (or close enough) e-commerce web app in about 2 weeks-1 month. This repository concerns the Front-End of this project while the Back-End is in PHP (Symfony 5) in another repository, the repositories for the back-end is not mine and private so I can't link it as of now but I made basic SQL queries and triggers, implemented Stripe sessions, webhook and refresh token/access token that are httpOnly.
 
 ## Installation
 
@@ -40,18 +32,3 @@ yarn dev
 # if you use pnpm
 pnpm dev
 ```
-
-4. That's it! You're done with this side of the project. Now you must install the Back-End if you want to use this website without any errors.
-
-## Usage
-ADD DIFFERENT USAGES WITH SCREENSHOTS
-
-## Credits
-ADD COLLABORATORS
-
-
-Hello, on est le groupe sapesavenue avec [prénoms]. C'est donc une boutique en ligne de streetwear qui souhaite se développer à travers la France.
-
-- Présenter wireframe Front et Back brièvement (Front: Accueil, Panier, Shop)
-- Présenter MCD
-- Si plus de temps présenter les routes ou le dico de données
