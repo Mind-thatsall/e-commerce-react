@@ -1,4 +1,4 @@
-# E-Commerce Template
+# E-Commerce Project
 
 ## Description
 
