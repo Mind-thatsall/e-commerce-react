@@ -1,6 +1,5 @@
 import axios from "axios";
-import { id } from "date-fns/locale";
-import { getRefreshToken } from "./token";
+import { getNewAccessToken } from "./token";
 
 export const cartApiEndPoint = "user/cart";
 
@@ -8,26 +7,27 @@ export const cartApiEndPoint = "user/cart";
 
 export const getCartItems = async (params) => {
   try {
-    await getRefreshToken();
-    
+    await getNewAccessToken();
+
     const response = await axios.get(import.meta.env.VITE_API_URL + params[0], {
       withCredentials: true,
     });
     return response.data;
   } catch (err) {
-    console.error(err);
     if (err.code === "ERR_NETWORK")
+      throw new Error("An error occured while fetching your cart");
+    if (err.code === "ERR_BAD_RESPONSE")
       throw new Error("An error occured while fetching your cart");
     if (err.response.status === 401)
       throw new Error(
         "Not authorized to add to the cart. Verify you're connected."
-      );
+    );
   }
 };
 
 export const addCartItem = async (item) => {
   try {
-    await getRefreshToken();
+    await getNewAccessToken();
     const response = await axios.post(
       import.meta.env.VITE_API_URL + "api/secure/cart/add",
       item,
@@ -37,7 +37,6 @@ export const addCartItem = async (item) => {
     );
     return response.data;
   } catch (err) {
-    console.error(err);
     if (err.code === "ERR_NETWORK" || err.code === "ERR_BAD_REQUEST")
       throw new Error(
         "An error occured while trying to add an item to your cart"
@@ -52,7 +51,7 @@ export const deleteCartItem = async (id, size) => {
       size: size,
     };
 
-    await getRefreshToken();
+    await getNewAccessToken();
 
     const response = await axios.post(
       import.meta.env.VITE_API_URL + "api/secure/cart/delete",
@@ -63,7 +62,6 @@ export const deleteCartItem = async (id, size) => {
     );
     return response.data;
   } catch (err) {
-    console.error(err);
     if (err.code === "ERR_NETWORK" || err.code === "ERR_BAD_REQUEST")
       throw new Error(
         "An error occured while trying to remove an item to your cart"

@@ -1,9 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Account from "../components/Account";
 import History from "../components/History";
+import axios from "axios";
+import { getNewAccessToken } from "../services/token";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("account");
+  const [userData, setUserData] = useState({
+    address: "",
+    postal_code: "",
+    password: "",
+    city: "",
+    email: "",
+    phone_number: ""
+  })
+  const [orders, setOrders] = useState();
+
+  useEffect(() => {
+    async function getInformations() {
+      await getNewAccessToken();
+      const responseUser = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user", {
+        withCredentials: true
+      })
+      setUserData(responseUser.data);
+      const responseOrders = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user/orders", {
+        withCredentials: true
+      })
+      setOrders(responseOrders.data);
+      
+    }
+    getInformations();
+  
+  }, [])
+  
 
   return (
     <div className="grid max-h-screen min-h-screen grid-cols-12 overflow-y-auto grid-rows-12">
@@ -47,8 +76,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-
-        {activeTab === "account" ? <Account /> : <History />}
+        {activeTab === "account" ? <Account setUserData={setUserData} {...userData} /> : <History orders={orders} />}
       </div>
     </div>
   );

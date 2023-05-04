@@ -19,6 +19,11 @@
   width: 0px; /* For Chrome, Safari, and Opera */
 }
 
+html{
+  height: 100vh;
+  background-color: #9F948B;
+}
+
 .gender {
   position: absolute;
   top: 78%;

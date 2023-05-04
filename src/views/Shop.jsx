@@ -2,21 +2,26 @@ import React, { useRef, useEffect, useState } from "react";
 import Card from "@/components/Card";
 import { useLocation } from "react-router-dom";
 import { maxSize } from "@/utils/functions";
-import { articlesApiEndPoint, getArticles } from "@/services/articlesApi";
-import useSWR from "swr";
-import { toggleFilters } from "@/utils/animations";
-import { getArticlesFromCategory } from "../services/articlesApi";
+import { getArticles } from "@/services/articlesApi";
 
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
   const location = useLocation();
   const categorieName =
     location.pathname !== "/shop" ? location.pathname.split("/")[3] : "SHOP";
-  const gender = location.pathname.split("/")[1] !== 'shop' ? location.pathname.split("/")[1] : null;
+  const gender =
+    location.pathname.split("/")[1] !== "shop"
+      ? location.pathname.split("/")[1]
+      : null;
   const [articles, setArticles] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const searchTerm =
+    location.pathname.split("/")[1] === "search"
+      ? location.pathname.split("/")[2]
+      : null;
 
+  // Get the maxSize available for the articles and give it to the scrollBoxRef in px
   useEffect(() => {
     maxSize(scrollBoxRef.current);
     window.addEventListener("resize", () => maxSize(scrollBoxRef.current));
@@ -25,29 +30,23 @@ const Shop = (props) => {
     };
   }, []);
 
+  // Data fetching depending of where the user comes from. Either from a search, a filter by category or all the articles at once.
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDataByCategoryOrAll() {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        if(gender && categorieName) {
-          
-          setIsLoading(true)
-          const data = await getArticlesFromCategory(gender, categorieName);
-          setArticles(data);
-        } else {
-          const data = await getArticles();
-          setArticles(data);
-        }
-      } catch(err) {
-        console.log(err)
-        setError(err.message)
+        const data = await getArticles(gender, categorieName, searchTerm);
+        setArticles(data);
+      } catch (err) {
+        console.log(err);
+        setError(err.message);
       } finally {
         setIsLoading(false);
       }
     }
 
-    fetchData();    
-  }, [location.pathname])
+    fetchDataByCategoryOrAll();
+  }, [location.pathname]);
 
   return (
     <div className='px-[2vw] md:px-[4vw] pt-[10vh] flex flex-col justify-center items-center'>
@@ -65,16 +64,25 @@ const Shop = (props) => {
         ref={scrollBoxRef}
         className='hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto'
       >
-        {isLoading && "LOADING..."}
-        {error && <p className="uppercase absolute left-[50%] top-[50%] md:top-[55%] lg:top-[60%] translate-x-[-50%] text-[3.5vw] lg:text-[1.5vw] text-center text-[#222421]" style={{fontFamily: "ClashDisplay-Medium"}}>{error}</p>}
-        {articles &&
-          articles.map((article) => (
-            <Card
-              key={article.id}
-              {...article}
-              addToCartMutation={props.addToCartMutation}
-            />
-          ))}
+        {!isLoading
+          ? articles
+            ? articles.map((article) => (
+                <Card
+                  key={article.id}
+                  {...article}
+                  addToCartMutation={props.addToCartMutation}
+                />
+              ))
+            : "NOTHING FOUND"
+          : "LOADING..."}
+        {error && (
+          <p
+            className='uppercase absolute left-[50%] top-[50%] md:top-[55%] lg:top-[60%] translate-x-[-50%] text-[3.5vw] lg:text-[1.5vw] text-center text-[#222421]'
+            style={{ fontFamily: "ClashDisplay-Medium" }}
+          >
+            {error}
+          </p>
+        )}
       </div>
     </div>
   );
