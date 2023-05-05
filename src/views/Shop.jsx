@@ -49,35 +49,35 @@ const Shop = (props) => {
   }, [location.pathname]);
 
   return (
-    <div className='px-[2vw] md:px-[4vw] pt-[10vh] flex flex-col justify-center items-center'>
+    <div className="flex flex-col justify-center items-center px-[2vw] pt-[10vh] md:px-[4vw]">
       <h2
-        className='uppercase text-[8vw] leading-[8vw] text-[#796B66] mix-blend-difference ml-[1.5vw] self-start'
+        className="uppercase text-[8vw] leading-[8vw] text-[#796B66] mix-blend-difference ml-[1.5vw] self-start"
         style={{
           fontFamily: "ClashDisplay-SemiBold",
         }}
       >
         {categorieName}
       </h2>
-      <span className='w-[98%] block h-1 bg-[#796B66] mix-blend-difference'></span>
+      <span className="w-[98%] block h-1 bg-[#796B66] mix-blend-difference"></span>
 
       <div
         ref={scrollBoxRef}
-        className='hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto'
+        className="hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto"
       >
         {!isLoading
           ? articles
             ? articles.map((article) => (
-                <Card
-                  key={article.id}
-                  {...article}
-                  addToCartMutation={props.addToCartMutation}
-                />
-              ))
+              <Card
+                key={article.id}
+                {...article}
+                addToCartMutation={props.addToCartMutation}
+              />
+            ))
             : "NOTHING FOUND"
           : "LOADING..."}
         {error && (
           <p
-            className='uppercase absolute left-[50%] top-[50%] md:top-[55%] lg:top-[60%] translate-x-[-50%] text-[3.5vw] lg:text-[1.5vw] text-center text-[#222421]'
+            className="uppercase absolute left-[50%] top-[50%] md:top-[55%] lg:top-[60%] translate-x-[-50%] text-[3.5vw] lg:text-[1.5vw] text-center text-[#222421]"
             style={{ fontFamily: "ClashDisplay-Medium" }}
           >
             {error}

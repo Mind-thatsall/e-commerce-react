@@ -2,12 +2,15 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="grid max-h-screen min-h-screen grid-cols-12 overflow-y-auto grid-rows-12">
-      <div className="col-start-3 col-end-12 row-start-6 pt-10 m-auto row-end-12 sm:row-start-2 sm:row-end-5 md:ml-0">
+    <div className="grid overflow-y-auto grid-cols-12 min-h-screen max-h-screen grid-rows-12">
+      <div className="col-start-3 col-end-12 row-start-6 pt-10 m-auto sm:row-start-2 sm:row-end-5 md:ml-0 row-end-12">
         <h3 style={{ fontFamily: "ClashDisplay-Bold" }} className="text-xl">
           OPEN DAILY{" "}
         </h3>
-        <p style={{ fontFamily: "ClashDisplay-Medium" }} className="mb-5 text-base uppercase">
+        <p
+          style={{ fontFamily: "ClashDisplay-Medium" }}
+          className="mb-5 text-base uppercase"
+        >
           9am to 7pm
         </p>
         <hr style={{ borderColor: "black", margin: "10px 0" }} />
@@ -67,7 +70,7 @@ const Contact = () => {
               <input
                 type="text"
                 className="block w-full px-4 py-2 mt-2 bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#222421b7] text-[#222421]"
-              placeholder="Doe"
+                placeholder="Doe"
               />
             </div>
           </div>
